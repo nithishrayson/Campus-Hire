@@ -1,0 +1,157 @@
+* {
+  box-sizing: border-box;
+}
+
+.auth-container {
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* LEFT */
+.auth-left {
+  flex: 1;
+  background: linear-gradient(135deg, #1e3c72, #2a5298);
+  color: #fff;
+  padding: 4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.auth-left h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.tagline {
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+  opacity: 0.9;
+}
+
+.features li {
+  list-style: none;
+  margin: 0.75rem 0;
+}
+
+/* RIGHT */
+.auth-right {
+  flex: 1;
+  background: #f5f7fb;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+.auth-card {
+  background: #fff;
+  width: 100%;
+  max-width: 420px;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.auth-card h2 {
+  margin-bottom: 0.25rem;
+}
+
+.subtitle {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 1.5rem;
+}
+
+.form-body {
+  max-height: 420px;
+  overflow-y: auto;
+}
+
+input, select {
+  width: 100%;
+  padding: 0.75rem;
+  margin-bottom: 0.75rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+button {
+  width: 100%;
+  padding: 0.8rem;
+  background: #2a5298;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #1e3c72;
+}
+
+.toggle-text {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.toggle-text a {
+  cursor: pointer;
+  color: #2a5298;
+  font-weight: 500;
+}
+
+.admin-note {
+  background: #eef2ff;
+  padding: 0.6rem;
+  font-size: 0.85rem;
+  border-radius: 6px;
+  color: #444;
+}
+.loader {
+  width: 75px;
+  height: 75px;
+  border: 3px solid rgba(255,255,255,0.4);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  margin: auto;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+.toast {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  padding: 0.8rem 1.2rem;
+  border-radius: 8px;
+  color: white;
+  font-weight: 500;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  animation: slideIn 0.3s ease;
+}
+
+.toast.success {
+  background: linear-gradient(135deg, #28a745, #218838);
+}
+
+.toast.error {
+  background: linear-gradient(135deg, #dc3545, #b02a37);
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}

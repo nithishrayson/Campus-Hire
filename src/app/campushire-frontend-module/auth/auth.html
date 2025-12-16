@@ -1,0 +1,89 @@
+<div class="auth-container">
+
+  <!-- LEFT PANEL -->
+  <div class="auth-left">
+    <h1>CampusHire</h1>
+    <p class="tagline">
+      A unified platform for students, recruiters, and administrators.
+    </p>
+
+    <ul class="features">
+      <li>✔ Smart hiring</li>
+      <li>✔ Skill-based profiles</li>
+      <li>✔ Secure authentication</li>
+    </ul>
+  </div>
+
+  <!-- RIGHT PANEL -->
+  <div class="auth-right">
+    <div class="auth-card">
+
+      <h2>{{ isLoginMode ? 'Login' : 'Create Account' }}</h2>
+      <p class="subtitle">
+        {{ isLoginMode ? 'Welcome back' : 'Join in seconds' }}
+      </p>
+
+      <div class="form-body">
+
+        <!-- LOGIN -->
+        <form *ngIf="isLoginMode" class="login-form" [formGroup]="loginForm" (ngSubmit)="onLogin()">
+
+          <input type="email" placeholder="Email" formControlName="email">
+          <input type="password" placeholder="Password" formControlName="password">
+
+          <!-- Optional: display user role after login -->
+          <input type="text" placeholder="Role" formControlName="role" readonly *ngIf="loginForm.get('role')?.value">
+
+          <button type="submit" [disabled]="isLoading">
+            <span *ngIf="!isLoading">Login</span>
+            <span *ngIf="isLoading" class="loader"></span>
+          </button>
+        </form>
+
+
+        <!-- SIGNUP -->
+        <form *ngIf="!isLoginMode" class="signup-form" [formGroup]="signupForm" (ngSubmit)="onSignup()">
+
+          <input type="text" placeholder="Name" formControlName="name">
+          <input type="email" placeholder="Email" formControlName="email">
+          <input type="password" placeholder="Password" formControlName="password">
+
+          <select formControlName="role">
+            <option value="student">Student</option>
+            <option value="recruiter">Recruiter</option>
+            <option value="admin">Admin</option>
+          </select>
+
+          <!-- STUDENT -->
+          <div *ngIf="signupForm.get('role')?.value === 'student'">
+            <input type="number" placeholder="CGPA" formControlName="cgpa">
+            <input type="text" placeholder="Skills (comma separated)" formControlName="skills">
+          </div>
+
+          <!-- RECRUITER -->
+          <div *ngIf="signupForm.get('role')?.value === 'recruiter'">
+            <input type="text" placeholder="Company Name" formControlName="companyName">
+          </div>
+
+          <button type="submit" [disabled]="isLoading">
+            <span *ngIf="!isLoading">Create Account</span>
+            <span *ngIf="isLoading" class="loader"></span>
+          </button>
+        </form>
+
+      </div>
+
+      <p class="toggle-text">
+        <a (click)="toggleMode()">
+          {{ isLoginMode ? 'Create an account' : 'Already have an account? Login' }}
+        </a>
+      </p>
+
+    </div>
+  </div>
+
+</div>
+
+<div class="toast" *ngIf="message" [class.success]="messageType==='success'" [class.error]="messageType==='error'">
+  {{ message }}
+</div>
